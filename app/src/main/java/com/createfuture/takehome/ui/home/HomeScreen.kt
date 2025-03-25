@@ -32,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
@@ -61,7 +62,7 @@ fun HomeContent(
 ) {
     when {
         viewState.isLoading -> HomeLoading()
-        viewState.error -> Text("Something went wrong...")
+        viewState.error -> Text(text = "Something went wrong...", modifier = Modifier.testTag("ErrorText"))
         viewState.characters.isNotEmpty() -> CharacterDetailsView(
             viewState = viewState,
             searchState = searchState,
@@ -125,7 +126,8 @@ fun HomeLoading() {
         CircularProgressIndicator(
             modifier = Modifier
                 .width(64.dp)
-                .align(Alignment.Center),
+                .align(Alignment.Center)
+                .testTag("HomeScreenLoadingIndicator"),
             color = MaterialTheme.colorScheme.primary,
             trackColor = MaterialTheme.colorScheme.surfaceVariant,
         )

@@ -37,3 +37,12 @@ We would like you to fix the app's user facing issues (both documented and undoc
 Please use version control. Import the supplied code as is to git and commit your changes through that. This will allow us to review the changes you have made.
 
 We expect you should spend no more than 3 hours on this work. We appreciate you taking the time to work on this and understand that sometimes it's not possible to spend as much time as you would like. If there are any aspects of the codebase you would have liked to work on with more time, please detail these in the ReadME file to give us some insight in to your process.
+
+
+
+## Michael Wloch Comments
+
+I didn't get time to write all my UI tests or any integration tests, normally this would be done TDD or important to have completed before going out. 
+I also didn't get time to write plugins to clean up the imports which are repeated in each module in a custom build-src
+I would of liked to remove the fragment and convert to a pure compose design with compose navigation / single activity design (overkill for this task)
+With the design i would of liked to add a custom provider with the theme to add padding values etc synced with a design system rather than hard coded (ran of out time)
