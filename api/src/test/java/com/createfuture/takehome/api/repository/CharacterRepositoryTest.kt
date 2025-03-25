@@ -5,6 +5,8 @@ import com.createfuture.takehome.api.home.repository.CharacterRepository
 import com.createfuture.takehome.api.home.service.CharacterApi
 import com.createfuture.takehome.api.common.Result
 import com.createfuture.takehome.api.home.model.toCharacter
+import com.createfuture.takehome.api.home.repository.CharacterRepositoryImpl
+import com.createfuture.takehome.api.home.service.CharacterService
 import com.createfuture.takehome.api.testdata.characterList
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -22,17 +24,17 @@ import retrofit2.Response
 class CharacterRepositoryTest {
 
     private lateinit var repository: CharacterRepository
-    private val service: CharacterApi = mockk()
+    private val service: CharacterService = mockk()
 
     @Before
     fun setup() {
-        // repository =
+        repository = CharacterRepositoryImpl(service)
     }
 
     @Test
     fun `fetchCharacters emits Success when API returns valid character data`() = runTest {
         val response = Response.success(characterList)
-        coEvery { service.getCharacters("") } returns response
+        coEvery { service.getCharacters() } returns response
 
         val result = repository.fetchCharacters(refresh = true)
 
@@ -43,7 +45,7 @@ class CharacterRepositoryTest {
     @Test
     fun `fetchCharacters emits Failure when API response is unsuccessful`() = runTest {
         val response = Response.error<List<NetworkCharacter>>(400, "".toResponseBody())
-        coEvery { service.getCharacters("") } returns response
+        coEvery { service.getCharacters() } returns response
 
         val result = repository.fetchCharacters(refresh = true)
 
@@ -53,7 +55,7 @@ class CharacterRepositoryTest {
     @Test
     fun `fetchCharacters returns cached result when refresh is false and data exists`() = runTest {
         val response = Response.success(characterList)
-        coEvery { service.getCharacters("") } returns response
+        coEvery { service.getCharacters() } returns response
 
         repository.fetchCharacters(refresh = true)
         val result = repository.fetchCharacters(refresh = false)
@@ -61,6 +63,6 @@ class CharacterRepositoryTest {
         assertTrue(result is Result.Success)
         assertEquals(characterList.map { it.toCharacter() }, (result as Result.Success).data)
 
-        coVerify(exactly = 1) { service.getCharacters("") }
+        coVerify(exactly = 1) { service.getCharacters() }
     }
 }
