@@ -1,12 +1,11 @@
 package com.createfuture.takehome.api.home.repository
 
-import com.createfuture.takehome.api.common.Result
-import com.createfuture.takehome.api.home.model.toCharacter
-import com.createfuture.takehome.api.home.service.CharacterApi
-import com.createfuture.takehome.api.home.service.CharacterService
-import com.createfuture.takehome.model.GotCharacter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import com.createfuture.takehome.api.common.Result
+import com.createfuture.takehome.api.home.model.toCharacter
+import com.createfuture.takehome.api.home.service.CharacterService
+import com.createfuture.takehome.model.GotCharacter
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -1,29 +1,25 @@
-package com.createfuture.takehome.api.repository
+package com.createfuture.takehome.api.home.repository
 
 import com.createfuture.takehome.api.home.model.NetworkCharacter
-import com.createfuture.takehome.api.home.repository.CharacterRepository
-import com.createfuture.takehome.api.home.service.CharacterApi
-import com.createfuture.takehome.api.common.Result
-import com.createfuture.takehome.api.home.model.toCharacter
-import com.createfuture.takehome.api.home.repository.CharacterRepositoryImpl
 import com.createfuture.takehome.api.home.service.CharacterService
-import com.createfuture.takehome.api.testdata.characterList
 import io.mockk.coEvery
-import io.mockk.coVerify
-import io.mockk.mockk
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertTrue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
+import com.createfuture.takehome.api.common.Result
+import com.createfuture.takehome.api.home.model.toCharacter
+import io.mockk.coVerify
+import io.mockk.mockk
+import okhttp3.ResponseBody.Companion.toResponseBody
 
 @ExperimentalCoroutinesApi
 class CharacterRepositoryTest {
 
-    private lateinit var repository: CharacterRepository
+    private lateinit var repository: CharacterRepositoryImpl
     private val service: CharacterService = mockk()
 
     @Before

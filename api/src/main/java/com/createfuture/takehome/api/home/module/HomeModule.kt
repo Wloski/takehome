@@ -2,6 +2,7 @@ package com.createfuture.takehome.api.home.module
 
 import com.createfuture.takehome.api.home.repository.CharacterRepository
 import com.createfuture.takehome.api.home.repository.CharacterRepositoryImpl
+import com.createfuture.takehome.api.home.service.CharacterApi
 import com.createfuture.takehome.api.home.service.CharacterService
 import com.google.gson.GsonBuilder
 import dagger.Module

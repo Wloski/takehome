@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id("com.google.dagger.hilt.android")
 }
 
 kapt {
@@ -46,6 +47,7 @@ android {
         buildConfig = true
         compose true
     }
+
     namespace 'com.createfuture.takehome'
 }
 
@@ -64,6 +66,14 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.1"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.4.0'
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    implementation 'androidx.compose.ui:ui-text-google-fonts:1.7.8'
+
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.7'
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
@@ -79,5 +89,6 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    implementation project(':api')
     implementation project(':model')
 }

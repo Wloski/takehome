@@ -1,8 +1,8 @@
 package com.createfuture.takehome.api.home.repository
 
-import com.createfuture.takehome.model.GotCharacter
 import kotlinx.coroutines.flow.StateFlow
 import com.createfuture.takehome.api.common.Result
+import com.createfuture.takehome.model.GotCharacter
 
 interface CharacterRepository {
     val characters: StateFlow<Result<List<GotCharacter>>>

@@ -1,4 +1,4 @@
-package com.createfuture.takehome.api.testdata
+package com.createfuture.takehome.api.home.repository
 
 import com.createfuture.takehome.api.home.model.NetworkCharacter
 
