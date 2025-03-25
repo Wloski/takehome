@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Take Home"
 include ':app'
+include ':api'
+include ':model'

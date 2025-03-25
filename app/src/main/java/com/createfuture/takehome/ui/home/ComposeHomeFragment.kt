@@ -24,7 +24,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.gson.GsonBuilder
 import com.createfuture.takehome.R
-import com.createfuture.takehome.models.ApiCharacter
+import com.createfuture.takehome.model.GotCharacter
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import retrofit2.Response
@@ -41,7 +41,7 @@ class ComposeHomeFragment : Fragment() {
     ): ComposeView = ComposeView(requireContext()).apply {
         var retrofit = Retrofit.Builder().baseUrl("https://yj8ke8qonl.execute-api.eu-west-1.amazonaws.com").addConverterFactory(GsonConverterFactory.create(GsonBuilder().create())).client(OkHttpClient.Builder().build()).build()
         var service = retrofit.create(Service::class.java)
-        var charactersBody = mutableStateOf<List<ApiCharacter>?>(null)
+        var charactersBody = mutableStateOf<List<GotCharacter>?>(null)
         viewLifecycleOwner.lifecycleScope.launch {
             var _characters = service.getCharacters("Bearer 754t!si@glcE2qmOFEcN")
             charactersBody.value = _characters.body()!!
@@ -96,5 +96,5 @@ class ComposeHomeFragment : Fragment() {
 
 interface Service {
     @GET("/characters")
-    suspend fun getCharacters(@Header("Authorization") token: String): Response<List<ApiCharacter>>
+    suspend fun getCharacters(@Header("Authorization") token: String): Response<List<GotCharacter>>
 }
